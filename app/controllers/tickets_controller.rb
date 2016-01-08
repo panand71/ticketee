@@ -32,24 +32,30 @@ class TicketsController < ApplicationController
       flash.now[:alert] = "Ticket has not been updated."
       render "edit"
     end
-
   end
+
+  def destroy
+    @ticket.destroy
+    flash[:notice] = "Ticket has been deleted."
+    redirect_to @project
+  end
+
 
 
 
   private
 
-    def set_project
-      @project = Project.find(params[:project_id])
-    end
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
 
-    def set_ticket
-      @ticket = @project.tickets.find(params[:id])
-    end
+  def set_ticket
+    @ticket = @project.tickets.find(params[:id])
+  end
 
-    def ticket_params
-      params.require(:ticket).permit(:name, :description)
-    end
+  def ticket_params
+    params.require(:ticket).permit(:name, :description)
+  end
 
 
 end

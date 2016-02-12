@@ -6,7 +6,7 @@ RSpec.feature "Users can sign in" do
     visit "/"
     click_link "Sign In"
     fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
+    fill_in "Password", with: "passwords"
     click_button "Sign In"
     expect(page).to have_content "Signed in successfully."
     expect(page).to have_content "Signed in as #{user.email}"
@@ -17,7 +17,7 @@ RSpec.feature "Users can sign in" do
     visit "/"
     click_link "Sign In"
     fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
+    fill_in "Password", with: "passwords"
     click_button "Sign In"
     expect(page).to have_content "Your account has been archived."
   end  
